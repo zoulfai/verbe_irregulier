@@ -1,3 +1,4 @@
+
 const verbs = [
     
         { base: "arise", past: "arose", pastParticiple: "arisen", translation: "surgir" },
@@ -109,6 +110,7 @@ const verbs = [
     
 ];
 
+
 function loadVerbs() {
     const tableBody = document.getElementById("verbsTable");
     verbs.forEach((verb, index) => {
@@ -116,7 +118,7 @@ function loadVerbs() {
         row.innerHTML = `
             <td>${verb.base}</td>
             <td><input type="text" id="past-${index}" placeholder="Prétérit" oninput="validateInput(${index}, 'past')"></td>
-            <td><input type="text" id="participle-${index}" placeholder="Participe Passé" oninput="validateInput(${index}, 'participle')"></td>
+            <td><input type="text" id="pastParticiple-${index}" placeholder="Participe Passé" oninput="validateInput(${index}, 'pastParticiple')"></td>
             <td><input type="text" id="translation-${index}" placeholder="Traduction" oninput="validateInput(${index}, 'translation')"></td>
             <td id="result-${index}"></td>
         `;
@@ -136,37 +138,23 @@ function validateInput(index, column) {
     }
 }
 
-function checkAnswers() {
-    let correctPast = 0;
-    let correctParticiple = 0;
-    let correctTranslation = 0;
 
-    verbs.forEach((verb, index) => {
-        const pastAnswer = document.getElementById(`past-${index}`).value.trim().toLowerCase();
-        const participleAnswer = document.getElementById(`participle-${index}`).value.trim().toLowerCase();
-        const translationAnswer = document.getElementById(`translation-${index}`).value.trim().toLowerCase();
-
-        if (pastAnswer === verb.past.toLowerCase()) correctPast++;
-        if (participleAnswer === verb.pastParticiple.toLowerCase()) correctParticiple++;
-        if (translationAnswer === verb.translation.toLowerCase()) correctTranslation++;
-
-        const resultCell = document.getElementById(`result-${index}`);
-        resultCell.textContent = (pastAnswer === verb.past.toLowerCase() && 
-                                  participleAnswer === verb.pastParticiple.toLowerCase() && 
-                                  translationAnswer === verb.translation.toLowerCase()) ? "✅" : "❌";
-    });
-
+function playSound() {
+    const audio = document.getElementById("pop");
+    audio.currentTime = 0;  // Remet le son au début
+    audio.play();
 }
+
 
 function showAllAnswers() {
     verbs.forEach((verb, index) => {
         document.getElementById(`past-${index}`).value = verb.past;
-        document.getElementById(`participle-${index}`).value = verb.pastParticiple;
+        document.getElementById(`pastParticiple-${index}`).value = verb.pastParticiple;
         document.getElementById(`translation-${index}`).value = verb.translation;
 
         // Met à jour la couleur des champs pour indiquer qu'ils sont corrects
         document.getElementById(`past-${index}`).style.backgroundColor = "#d4edda";
-        document.getElementById(`participle-${index}`).style.backgroundColor = "#d4edda";
+        document.getElementById(`pastParticiple-${index}`).style.backgroundColor = "#d4edda";
         document.getElementById(`translation-${index}`).style.backgroundColor = "#d4edda";
     });
 }
@@ -178,12 +166,12 @@ function resetFields() {
     verbs.forEach((_, index) => {
         // Efface les valeurs des champs de saisie
         document.getElementById(`past-${index}`).value = "";
-        document.getElementById(`participle-${index}`).value = "";
+        document.getElementById(`pastParticiple-${index}`).value = "";
         document.getElementById(`translation-${index}`).value = "";
 
         // Rétablit la couleur de fond par défaut
         document.getElementById(`past-${index}`).style.backgroundColor = "";
-        document.getElementById(`participle-${index}`).style.backgroundColor = "";
+        document.getElementById(`pastParticiple-${index}`).style.backgroundColor = "";
         document.getElementById(`translation-${index}`).style.backgroundColor = "";
 
         // Efface le résultat

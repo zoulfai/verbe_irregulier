@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Révision des Verbes Irréguliers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Révisez les verbes irréguliers en anglais</h1>
+    <audio id="pop" src="pop.mp3" preload="auto"></audio>
+    <header>Révisez les verbes irréguliers en anglais</header>
     <table>
         <thead>
             <tr>
@@ -22,9 +26,10 @@
             <!-- Les lignes des verbes seront générées par JavaScript -->
         </tbody>
     </table>
-    <button onclick="checkAnswers()">Vérifier les réponses</button>
-    <button onclick="showAllAnswers()">Voir les réponses</button>
-    <button onclick="resetFields()">Recommencer</button>
+    <div class="floating-buttons">
+    <button onclick="playSound(); showAllAnswers()">🔍</button>
+    <button onclick="playSound(); resetFields()">🔄</button>
+</div>
     <p id="feedback"></p>
     
     <script src="script.js"></script>

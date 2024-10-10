@@ -120,7 +120,6 @@ function loadVerbs() {
             <td><input type="text" id="past-${index}" placeholder="Prétérit" oninput="validateInput(${index}, 'past')"></td>
             <td><input type="text" id="pastParticiple-${index}" placeholder="Participe Passé" oninput="validateInput(${index}, 'pastParticiple')"></td>
             <td><input type="text" id="translation-${index}" placeholder="Traduction" oninput="validateInput(${index}, 'translation')"></td>
-            <td id="result-${index}"></td>
         `;
         tableBody.appendChild(row);
     });
@@ -174,8 +173,6 @@ function resetFields() {
         document.getElementById(`pastParticiple-${index}`).style.backgroundColor = "";
         document.getElementById(`translation-${index}`).style.backgroundColor = "";
 
-        // Efface le résultat
-        document.getElementById(`result-${index}`).textContent = "";
     });
 }
 

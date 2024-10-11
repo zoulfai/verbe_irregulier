@@ -132,7 +132,7 @@ input {
     }
 
     .floating-buttons {
-        top: 60%;
+        top: 10%;
         right: 10px;
     }
 
@@ -154,7 +154,7 @@ input {
     }
 
     .floating-buttons {
-        top: 60%;
+        top: 10%;
         right: 5px;
     }
 
